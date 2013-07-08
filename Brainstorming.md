@@ -2,7 +2,7 @@
 
 ## Challenges
 
-  * Vimscript is a moving target; the parser would have to accommodate all current options/Ex commands, and be able to easily add new ones.  It would also need to know which version to Vim to lint against.
+  * Vimscript is a moving target; the parser would have to accommodate all current options/Ex commands, and be able to easily add new ones.  It would also need to know which version of Vim to lint against.
   * There's currently no standard of what Vimscript "best practices" are.
   * I'm not certain about which implementation language to use; this is especially tricky, since Vim brings programmers from various language backgrounds in together.  I was thinking about maybe decoupling the implementation language from the plugin environment, so that users can write plugins in whatever language they feel comfortable with.
 
@@ -21,24 +21,26 @@ There are undoubtedly others; I'll document them as a I think of them.
 
 ## Policy Ideas
 
-  * Check that you use full option names (not set tw, but set textwidth)
-  * Check that you use full command names (not :se, but :set)
-  * Check that if/while/for/function/etc all end with endif/endwhile/endfor/endfunction (not just end)
-  * Check that you use function! (and not function)
-  * Check that you put all autocmds into a group, and that you use autocmd! to clear them
+  * Check that you use full option names (not `set tw`, but `set textwidth`)
+  * Check that you use full command names (not `:se`, but `:set`)
+  * Check that `if`/`while`/`for`/`function`/etc all end with `endif`/`endwhile`/`endfor`/`endfunction` (not just `end`)
+  * Check that you use `function!` (and not `function`)
+  * Check that you put all autocmds into a group, and that you use `autocmd!` to clear them
   * Check that you don't clear an autocmd group after setting it up earlier in the script (like I did with my Custom group)
-  * Check that you use ==#/==? instead of ==
-  * Check that you use inoremap instead of imap
-  * Don't use map; be explicit about using imap,nmap,etc
-  * Don't use abbrev; be explicit about using iabbrev,cabbrev,etc
-  * Make sure autocommands don't end in <CR>
+  * Check that you use `==#`/`==?` instead of `==`
+  * Check that you use `inoremap` instead of `imap`
+  * Don't use `map`; be explicit about using `imap`, `nmap`, etc
+  * Don't use `abbrev`; be explicit about using `iabbrev`, `cabbrev`, etc
+  * Make sure autocommands don't end in `<CR>`
   * Make sure a vimrc clears all mapping/abbreviations?
   * Enforce formatting?
-  * preserve &cpo
+  * preserve `&cpo`
   * checking if a script has been loaded
-  * Use '' for strings
-  * Stylistic ones (<Esc> vs <esc>, <C-u> vs <c-u>)
+  * Use `''` for strings
+  * Stylistic ones (`<Esc>` vs `<esc>`, `<C-u>` vs `<c-u>`)
   * If we could somehow detect setlocal for options set by an autocommand...
-  * Detecting if exists('g:option') && g:option
+  * Detecting `if exists('g:option') && g:option`
   * Detecting unnecessary evals
-  * Prefer normal! to normal (don't use mappings)
+  * Prefer `normal!` to `normal` (don't use mappings)
+  * Enforce format/style of mode lines
+  * Enforce indentation style and other whitespace
