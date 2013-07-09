@@ -44,3 +44,4 @@ There are undoubtedly others; I'll document them as a I think of them.
   * Prefer `normal!` to `normal` (don't use mappings)
   * Enforce format/style of mode lines
   * Enforce indentation style and other whitespace
+  * Make sure to check for has('perl') before doing perl << PERL, etc
