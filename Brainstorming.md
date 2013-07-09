@@ -45,3 +45,13 @@ There are undoubtedly others; I'll document them as a I think of them.
   * Enforce format/style of mode lines
   * Enforce indentation style and other whitespace
   * Make sure to check for has('perl') before doing perl << PERL, etc
+
+## Other Ideas
+
+  * It should be very easy to write tests for new policies.  We don't want to break any policies in future development.
+  * A configuration should be compiled from a configuration file and command line options, and passed to policy plugins as an associative array.  This is so that a plugin may "opt out" of certain configurations.
+    For example, let's say that we wish to implement a "severity" feature similar to Perl::Critic.  A plugin could opt out of checking if its self-assigned severity doesn't meet the desired level.  A plugin
+    loading engine can process certain key/value pairs on its own as well.
+  * A target Vimscript can tell vimlint to not apply certain policies via a special comment (ala Perl::Critic's `no critic` comment)
+  * Installing custom policies should use Vim's runtime path, so custom policies can work easily with Pathogen and other tools.
+  * Should users have to explicitly list which plugins they want to use?  Perl::Critic uses all the ones that are installed (minus a blacklist), and I'm not too keen on this behavior.
